@@ -1,0 +1,12 @@
+.list {
+    height: 450px;
+    width: 450px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    overflow-y: scroll;
+    
+}
+.list::-webkit-scrollbar {
+    display: none;
+}
