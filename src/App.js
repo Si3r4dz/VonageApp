@@ -20,7 +20,7 @@ function App() {
     setListname('');
   }
 
-  const handleAddTaskClick = (e,index) => {
+  const handleAddTaskClick = (index) => {
     let tmpArr = [...lists];
     tmpArr[index].tasks.push({
       title:'Sraka',
@@ -33,8 +33,14 @@ function App() {
   const handleRemoveListClick = (e) => {
     setLists(lists.filter(list=>list.id !== e));
   } 
-  const handleRemoveTaskClick = (e) => {
-    console.log(e)
+  const handleRemoveTaskClick = (e,listId) => {
+   let tmp =  lists.filter((list)=>{
+        if(list.id === listId){
+          list.tasks = list.tasks.filter(task => task.id !== e);
+          return list;
+        }else return list
+    });
+    setLists(tmp);
   } 
 
   return (
@@ -54,9 +60,9 @@ function App() {
                 name={list.name}
                 id={list.id}
                 key={index}
-                onAddTaskClick={()=>handleAddTaskClick(list.id,index)}
+                onAddTaskClick={()=>handleAddTaskClick(index)}
                 onRemoveListClick={handleRemoveListClick}
-                onRemoveTaskClick={handleRemoveTaskClick}
+                onRemoveTaskClick={(e)=>handleRemoveTaskClick(e,list.id)}
                 tasks={list.tasks}
             />)
           })}

@@ -23,7 +23,7 @@ function ListElement({
             tasks : {tasks?.map((task, index)=>{
                 return (
                     <div key={index}>
-                        <input type='checkbox' name={task.id}/>
+                        <input type='checkbox'/>
                         {task.title} &nbsp;
                         <button on onClick={()=>onRemoveTaskClick(task.id)}>
                             TRASH
