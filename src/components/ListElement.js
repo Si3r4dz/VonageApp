@@ -1,33 +1,34 @@
-import { useEffect } from 'react';
 import './components.css';
 
 function ListElement({
     name,
     id,
-    onAddClick,
-    onRemoveClick,
+    onAddTaskClick,
+    onRemoveListClick,
+    onRemoveTaskClick,
     tasks,
 }) {
 
-    // useEffect(() => {
-    //     console.log(tasks);
-    // },[tasks]);
-
   return (
      <div className='list' key={id}>
-            LIST NAME : {name} || ID : {id} &nbsp;
-        <button onClick={()=>onAddClick(id)}>
+            LIST NAME : {name}&nbsp;
+        <button onClick={()=>onAddTaskClick(id)}>
             ADD TASK
         </button>
         &nbsp;
-        <button onClick={()=>onRemoveClick(id)}>
+        <button onClick={()=>onRemoveListClick(id)}>
             REMOVE LIST
         </button>
         <div>
             tasks : {tasks?.map((task, index)=>{
                 return (
                     <div key={index}>
-                        {task.title}
+                        <input type='checkbox' name={task.id}/>
+                        {task.title} &nbsp;
+                        <button on onClick={()=>onRemoveTaskClick(task.id)}>
+                            TRASH
+                        </button>
+                        
                     </div>
                 )
             })}

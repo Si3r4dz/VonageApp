@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import ListElement from './components/ListElement';
 
 
@@ -20,25 +20,23 @@ function App() {
     setListname('');
   }
 
-  const handleAddTaskClick = (e) => {
-    console.log(e);
-     let tmplist = lists[e-1].tasks.push({
+  const handleAddTaskClick = (e,index) => {
+    let tmpArr = [...lists];
+    tmpArr[index].tasks.push({
       title:'Sraka',
       expiresAt:new Date(),
-      id: lists[e-1].tasks.length !== undefined ? lists[e-1].tasks.length + 1 : 1
+      id: tmpArr[index].tasks.length !== 0 ? tmpArr[index].tasks.length + 1 : 1
     });
-    setLists(lists);
+    setLists(tmpArr)
   } 
 
   const handleRemoveListClick = (e) => {
     setLists(lists.filter(list=>list.id !== e));
   } 
+  const handleRemoveTaskClick = (e) => {
+    console.log(e)
+  } 
 
-  useEffect(()=>{
-    console.log("uesEfect",lists)
-  },[lists])
-
-  
   return (
     <div className="App">
       <div className='mainContainer'>
@@ -50,14 +48,15 @@ function App() {
           Add List
         </button>
         <div className='listView'>
-          {lists.map((list, index)=>{
+          {lists?.map((list, index)=>{
             return (
               <ListElement
                 name={list.name}
                 id={list.id}
                 key={index}
-                onAddClick={handleAddTaskClick}
-                onRemoveClick={handleRemoveListClick}
+                onAddTaskClick={()=>handleAddTaskClick(list.id,index)}
+                onRemoveListClick={handleRemoveListClick}
+                onRemoveTaskClick={handleRemoveTaskClick}
                 tasks={list.tasks}
             />)
           })}
