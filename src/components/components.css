@@ -1,0 +1,51 @@
+.list {
+    height: 550px;
+    min-width: 350px;
+    max-width: 550px;
+    margin: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    z-index: 1;
+    padding: 10px;
+}
+
+.listHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom:10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.taskMenu{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+.taskList {
+    padding: 10px;
+    max-height: 350px;
+    overflow-y: scroll;
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+}
+.taskList::-webkit-scrollbar {
+    display: none;
+}
+.task{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    min-width: 350px;
+    max-width: 500px;
+    gap: 10px;
+    background-color: rgba(100, 110, 110, 0.1);
+}
