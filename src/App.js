@@ -36,6 +36,7 @@ function App() {
   } 
 
   const handleRemoveTaskClick = (taskId,listId) => {
+  
    let tmp =  lists.filter((list)=>{
         if(list.id === listId){
           list.tasks = list.tasks.filter(task => task.id !== taskId);
@@ -66,6 +67,7 @@ function App() {
     }
 
   const handleMuveUpClick = (taskIndex,listId) => {
+    
     let tmp = lists.filter((list)=>{
       if(list.id === listId){
         list.tasks = reorder(list.tasks,taskIndex,taskIndex-1); 
@@ -76,6 +78,7 @@ function App() {
   }
 
   const handleMuveDownClick = (taskIndex,listId,length) => {
+    
     let tmp = lists.filter((list)=>{
       if(list.id === listId){
        list.tasks = reorder(list.tasks,taskIndex,taskIndex+1,length); 
